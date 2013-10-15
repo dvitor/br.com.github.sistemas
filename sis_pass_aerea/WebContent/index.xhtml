@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<body >
+<f:view contentType="text/html">
+	
+	 <h:head>
+        <title>Bem vindo ao Sistema de Compra de Passagens</title>
+    </h:head>
+    <h:body >	
+    	
+             <h:form id="loginForm" prependId="false">
+	            <p:messages id="mensagens" showSummary="true" showDetail="false" />
+            	<p/>
+                <p:panelGrid >
+                	<p:row>
+                		<p:column>
+		                    <h:outputLabel value="CPF:" />
+                		</p:column>
+                		<p:column>
+		                    <p:inputMask mask="999.999.999-99"  id="input_cpf" value="#{loginController.cpf}" maxlength="14" />
+                		</p:column>
+                	</p:row>
+                	<p:row>
+                		<p:column>
+		                    <h:outputLabel value="Senha:" />
+                		</p:column>
+                		<p:column>
+		                    <h:inputSecret id="input_senha" value="#{loginController.senha}" maxlength="6"/>
+                		</p:column>
+                	</p:row>
+                	<p:row>
+                    	<p:column>
+		                </p:column>
+		                <p:column>
+		                    <p:commandButton id="botaoLogin" value="Login" 
+			                    actionListener="#{loginController.efetuarLogin()}" update=":loginForm:mensagens"/>
+		                    <p:commandButton id="botaoCadastro" value="Cadastro" action="cadastro.xhtml"/>
+                    	</p:column>
+                	</p:row>
+                </p:panelGrid>
+  			</h:form>
+       
+    </h:body>
+	
+
+</f:view>
+</body>
+</html>

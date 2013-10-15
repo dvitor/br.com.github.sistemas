@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html" 
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<body >
+<f:view contentType="text/html">
+	
+	 <h:head>
+        <title>Bem vindo ao Sistema de Compra de Passagens</title>
+    </h:head>
+    <h:body >	
+    	
+             <h:form id="cadastroForm" prependId="false">
+	            <p:messages id="mensagensCadastro" showSummary="true" showDetail="false" />
+            	<p/>
+	 			<p:panelGrid>
+                	<p:row>
+                		<p:column>
+			        		<h:outputLabel value="Nome:" style="font-size:18px;" />
+			        	</p:column>
+			        	<p:column>
+							<h:inputText id="input_nome" value="#{cadastroController.usuario.nome}"/>
+						</p:column>
+                	</p:row>
+
+                	<p:row>
+                		<p:column>
+			        		<h:outputLabel value="Data Nascimento:" style="font-size:18px;" />
+			        	</p:column>
+			        	<p:column>
+							<p:inputMask mask="99/99/9999"  id="input_data"  value="#{cadastroController.usuario.dataNascimento}">
+								<f:convertDateTime pattern="dd/MM/yyyy" />
+							</p:inputMask>
+						</p:column>
+                	</p:row>
+                	
+                	<p:row>
+                		<p:column>
+			        		<h:outputLabel value="CPF:" style="font-size:18px;" />
+			        	</p:column>
+			        	<p:column>
+							<p:inputMask mask="999.999.999-99" id="input_cpf" value="#{cadastroController.usuario.cpf}"/>
+						</p:column>
+                	</p:row>
+                	
+                	<p:row>
+                		<p:column>
+			        		<h:outputLabel value="Telefone:" style="font-size:18px;" />
+			        	</p:column>
+			        	<p:column>
+							<h:inputText id="input_telefone" value="#{cadastroController.usuario.telefone}"/>
+						</p:column>
+                	</p:row>
+                	
+                	<p:row>
+                		<p:column>
+                			<h:outputLabel value="Pergunta Secreta:" style="font-size:18px;" />
+                		</p:column>
+			        	<p:column>
+	                		<p:selectOneMenu id="select_pergunta" 
+								value="#{cadastroController.usuario.enumPergunta}" >
+								<f:selectItems
+									value="#{cadastroController.listaPerguntas}"
+									var="pergunta" itemValue="#{pergunta}"
+									itemLabel="#{pergunta.descricao}" />
+							</p:selectOneMenu>
+						</p:column>
+                	</p:row>                	
+                	
+                	<p:row>
+                		<p:column>
+			        		<h:outputLabel value="Resposta Secreta:" style="font-size:18px;" />
+			        	</p:column>
+			        	<p:column>
+							<h:inputText id="input_resposta" value="#{cadastroController.usuario.resposta}"/>
+						</p:column>
+                	</p:row>
+                	
+                	<p:row>
+                		<p:column>
+			        		<h:outputLabel value="Senha:" style="font-size:18px;" />
+			        	</p:column>
+			        	<p:column>
+							<h:inputSecret id="input_senha" value="#{cadastroController.usuario.senha}"/>
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column>
+			        		<h:outputLabel value="Confirme sua Senha:" style="font-size:18px;" />
+			        	</p:column>
+			        	<p:column>	
+							<h:inputSecret id="input_confirma_senha" value="#{cadastroController.confirmaSenha}"/>
+						</p:column>
+                	</p:row>
+                	
+                	<p:row>
+                		<p:column>
+		                </p:column>
+		                <p:column>
+		                	<p:commandButton id="botaoConfirma" value="Confirmar" 
+		               	    	actionListener="#{cadastroController.salvar()}" update=":cadastroForm:mensagensCadastro"/>
+		               	    	
+		                    <p:commandButton id="botaoLimpar" value="Limpar"
+		                    	actionListener="#{cadastroController.limparCampos()}" update=":cadastroForm"/>
+                    	</p:column>
+                	</p:row>
+                	
+                </p:panelGrid>						
+		  	</h:form>	
+	</h:body>
+</f:view>
+</body>
+</html>
