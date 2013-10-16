@@ -7,7 +7,7 @@
     <persistence-unit name="defaultUnit">
 		<class>br.model.Usuario</class>
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.hbm2ddl.auto" value="validate" />
 		</properties>	
 	</persistence-unit>
 	
